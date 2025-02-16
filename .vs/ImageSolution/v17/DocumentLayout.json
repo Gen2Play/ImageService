@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C#\\API\\Gen2Play\\ImageSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D74E973-489D-4BAB-BF7B-323318C210E3}|Shared\\Shared.csproj|d:\\c#\\api\\gen2play\\imagesolution\\shared\\middlewares\\listenonlyapigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D74E973-489D-4BAB-BF7B-323318C210E3}|Shared\\Shared.csproj|solutionrelative:shared\\middlewares\\listenonlyapigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D74E973-489D-4BAB-BF7B-323318C210E3}|Shared\\Shared.csproj|d:\\c#\\api\\gen2play\\imagesolution\\shared\\di\\sharedservicecontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D74E973-489D-4BAB-BF7B-323318C210E3}|Shared\\Shared.csproj|solutionrelative:shared\\di\\sharedservicecontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\context\\configuration\\imageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\context\\configuration\\imageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43C0F4F-B7B3-443E-9EB4-6969CEAE4AB6}|BusinessObject\\Domain.csproj|d:\\c#\\api\\gen2play\\imagesolution\\businessobject\\entities\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C43C0F4F-B7B3-443E-9EB4-6969CEAE4AB6}|BusinessObject\\Domain.csproj|solutionrelative:businessobject\\entities\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 155,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SharedServiceContainer.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Shared\\DI\\SharedServiceContainer.cs",
+              "RelativeDocumentMoniker": "Shared\\DI\\SharedServiceContainer.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Shared\\DI\\SharedServiceContainer.cs",
+              "RelativeToolTip": "Shared\\DI\\SharedServiceContainer.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T12:58:53.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ListenOnlyApiGateway.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Shared\\Middlewares\\ListenOnlyApiGateway.cs",
+              "RelativeDocumentMoniker": "Shared\\Middlewares\\ListenOnlyApiGateway.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Shared\\Middlewares\\ListenOnlyApiGateway.cs",
+              "RelativeToolTip": "Shared\\Middlewares\\ListenOnlyApiGateway.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T12:58:55.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Context\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Context\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Context\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Context\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAqwBgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T12:56:07.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Image.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\BusinessObject\\Entities\\Image.cs",
+              "RelativeDocumentMoniker": "BusinessObject\\Entities\\Image.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\BusinessObject\\Entities\\Image.cs",
+              "RelativeToolTip": "BusinessObject\\Entities\\Image.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAcwA4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T12:50:50.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ImageConfiguration.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Context\\Configuration\\ImageConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Context\\Configuration\\ImageConfiguration.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Context\\Configuration\\ImageConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Context\\Configuration\\ImageConfiguration.cs",
+              "ViewState": "AgIAACwAAAAABQAAAAAqwEMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T12:39:22.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 245,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:10:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
