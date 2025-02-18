@@ -1,7 +1,13 @@
-﻿using Infrastructure.Context;
+﻿using Application.Image.Interface;
+using Infrastructure.Cloud;
+using Infrastructure.Context;
+using Infrastructure.Context.Initalization;
+using Infrastructure.Images;
+using Infrastructure.Tags;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Cloud;
 using Shared.DI;
 using System;
 using System.Collections.Generic;
@@ -17,6 +23,15 @@ public static class ServiceContainer
     {
         SharedServiceContainer.AddSharedServices<ApplicationDbContext>(services, config, config["MySerilog:ProductLog"]);
 
+        services.Configure<CloudinarySetting>(config.GetSection("Cloudinary"));
+
+        services.AddScoped<ICloudInterface, CloudService>();
+        services.AddScoped<IImageService, ImageService>();
+        services.AddScoped<ITagService, TagService>();
+        services.AddTransient<DatabaseInitializer>();
+        services.AddTransient<ApplicationDbSeeder>();
+        //services.AddServices(typeof(ICustomSeeder), ServiceLifetime.Transient);
+        services.AddTransient<CustomSeederRunner>();
         return services;
     }
 
@@ -30,5 +45,10 @@ public static class ServiceContainer
     {
         // Create a new scope to retrieve scoped services
         await SharedServiceContainer.InitializeDatabasesAsync<ApplicationDbContext>(services, cancellationToken);
+
+        using var scope = services.CreateScope();
+
+        await scope.ServiceProvider.GetRequiredService<DatabaseInitializer>()
+            .InitializeAsync(cancellationToken);
     }
 }

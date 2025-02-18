@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities;
+namespace Application.Image;
 
-public class Tag : AuditableEntity
+public class TagRequest
 {
-    public string Name { get; set; }
+    public string Tag { get; set; }
 }

@@ -36,7 +36,13 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,15 +72,16 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatorID = table.Column<string>(type: "text", nullable: false),
+                    CreatorID = table.Column<Guid>(type: "uuid", nullable: false),
                     TypeID = table.Column<Guid>(type: "uuid", nullable: false),
                     CollectionID = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Link = table.Column<string>(type: "text", nullable: false),
+                    ImagePublicID = table.Column<string>(type: "text", nullable: false),
                     Height = table.Column<int>(type: "integer", nullable: false),
                     Width = table.Column<int>(type: "integer", nullable: false),
-                    size = table.Column<int>(type: "integer", nullable: false),
+                    size = table.Column<long>(type: "bigint", nullable: false),
                     Download = table.Column<int>(type: "integer", nullable: false),
                     View = table.Column<int>(type: "integer", nullable: false),
                     isAIGen = table.Column<bool>(type: "boolean", nullable: false),
@@ -90,11 +97,6 @@ namespace Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Image", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Image_Collection_CollectionID",
-                        column: x => x.CollectionID,
-                        principalTable: "Collection",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Image_Type_TypeID",
                         column: x => x.TypeID,
@@ -196,11 +198,6 @@ namespace Infrastructure.Migrations
                 column: "ImageID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_CollectionID",
-                table: "Image",
-                column: "CollectionID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Image_TypeID",
                 table: "Image",
                 column: "TypeID");
@@ -220,6 +217,9 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Collection");
+
+            migrationBuilder.DropTable(
                 name: "FavoriteImages");
 
             migrationBuilder.DropTable(
@@ -233,9 +233,6 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tag");
-
-            migrationBuilder.DropTable(
-                name: "Collection");
 
             migrationBuilder.DropTable(
                 name: "Type");

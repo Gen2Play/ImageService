@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250216125802_Init")]
+    [Migration("20250218041241_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -157,9 +157,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("CreatorID")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid>("CreatorID")
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("uuid");
@@ -176,6 +175,10 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("Height")
                         .HasColumnType("integer");
+
+                    b.Property<string>("ImagePublicID")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -209,12 +212,10 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("isAIGen")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("size")
-                        .HasColumnType("integer");
+                    b.Property<long>("size")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CollectionID");
 
                     b.HasIndex("TypeID");
 
@@ -265,6 +266,24 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -328,10 +347,6 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Image", b =>
                 {
-                    b.HasOne("Domain.Entities.Collection", null)
-                        .WithMany()
-                        .HasForeignKey("CollectionID");
-
                     b.HasOne("Domain.Entities.Type", null)
                         .WithMany()
                         .HasForeignKey("TypeID")

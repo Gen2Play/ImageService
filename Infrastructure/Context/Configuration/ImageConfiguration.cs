@@ -29,7 +29,7 @@ public class ImageConfiguration : IEntityTypeConfiguration<Image>
         builder
             .HasMany<ImageTag>()
             .WithOne()
-            .HasForeignKey(b => b.ImageID).IsRequired(true);
+            .HasForeignKey(b => b.ImageID);
     }
 }
 
@@ -68,9 +68,9 @@ public class CollectionConfiguration : IEntityTypeConfiguration<Collection>
         builder
             .ToTable("Collection");
 
-        builder
-            .HasMany<Image>()
-            .WithOne()
-            .HasForeignKey(b => b.CollectionID).IsRequired(false);
+        //builder
+        //    .HasMany<Image>()
+        //    .WithOne()
+        //    .HasForeignKey(b => b.CollectionID).IsRequired(false);
     }
 }

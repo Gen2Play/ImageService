@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\C#\\API\\Gen2Play\\ImageSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,14 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
-              "RelativeDocumentMoniker": "Host\\appsettings.json",
-              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
-              "RelativeToolTip": "Host\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-17T12:37:02.327Z",
+              "Title": "ImageService.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Images\\ImageService.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
+              "RelativeToolTip": "Infrastructure\\Images\\ImageService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwEoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:05:37.92Z",
               "EditorCaption": ""
             }
           ]
@@ -66,6 +66,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             }
           ]
         }

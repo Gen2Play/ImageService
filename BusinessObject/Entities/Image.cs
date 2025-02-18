@@ -10,7 +10,7 @@ namespace Domain.Entities;
 public class Image : AuditableEntity
 {
     [Required]
-    public string CreatorID { get; set; }
+    public Guid CreatorID { get; set; }
     public Guid TypeID { get; set; }
     public Guid CollectionID { get; set; }
     [Required]
@@ -19,9 +19,10 @@ public class Image : AuditableEntity
     public string Description { get; set; }
     [Required]
     public string Link { get; set; }
+    public string ImagePublicID { get; set; }
     public int Height { get; set; }
     public int Width { get; set; }
-    public int size { get; set; }
+    public long size { get; set; }
     public int Download {  get; set; }
     public int View {  get; set; }
     public bool isAIGen { get; set; }
