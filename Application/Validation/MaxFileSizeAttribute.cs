@@ -11,9 +11,9 @@ namespace Application.Validation
     public class MaxFileSizeAttribute : ValidationAttribute
     {
         private readonly int _maxSizeInBytes;
-        private readonly int _minSizeInBytes;
+        private readonly double _minSizeInBytes;
 
-        public MaxFileSizeAttribute(int maxSizeInMB, int minSize)
+        public MaxFileSizeAttribute(int maxSizeInMB, double minSize)
         {
             _maxSizeInBytes = maxSizeInMB * 1024 * 1024;
             _minSizeInBytes = minSize * 1024 * 1024;

@@ -5,6 +5,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\controllers\\imagecontroller\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\controllers\\imagecontroller\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\image\\interface\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\image\\interface\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\image\\uploadimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\image\\uploadimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\common\\paginationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\common\\paginationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +30,34 @@
       "DocumentGroups": [
         {
           "DockedHeight": 155,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaginationFilter.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Common\\PaginationFilter.cs",
+              "RelativeDocumentMoniker": "Application\\Common\\PaginationFilter.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Common\\PaginationFilter.cs",
+              "RelativeToolTip": "Application\\Common\\PaginationFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T14:14:05.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UploadImageRequest.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Image\\UploadImageRequest.cs",
+              "RelativeDocumentMoniker": "Application\\Image\\UploadImageRequest.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Image\\UploadImageRequest.cs",
+              "RelativeToolTip": "Application\\Image\\UploadImageRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T13:19:49.622Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -30,13 +72,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ImageController.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Controllers\\ImageController\\ImageController.cs",
+              "RelativeDocumentMoniker": "Host\\Controllers\\ImageController\\ImageController.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Controllers\\ImageController\\ImageController.cs*",
+              "RelativeToolTip": "Host\\Controllers\\ImageController\\ImageController.cs*",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwCsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T13:17:38.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IImageService.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Image\\Interface\\IImageService.cs",
+              "RelativeDocumentMoniker": "Application\\Image\\Interface\\IImageService.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Image\\Interface\\IImageService.cs*",
+              "RelativeToolTip": "Application\\Image\\Interface\\IImageService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T09:11:36.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ImageService.cs",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Images\\ImageService.cs",
               "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
               "RelativeToolTip": "Infrastructure\\Images\\ImageService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwEoAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAAAA4BAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T06:05:37.92Z",
               "EditorCaption": ""

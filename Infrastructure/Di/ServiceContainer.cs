@@ -25,6 +25,9 @@ public static class ServiceContainer
 
         services.Configure<CloudinarySetting>(config.GetSection("Cloudinary"));
 
+        services.Configure<UserApiUrl>(config.GetSection("UserApi"));
+
+
         services.AddScoped<ICloudInterface, CloudService>();
         services.AddScoped<IImageService, ImageService>();
         services.AddScoped<ITagService, TagService>();

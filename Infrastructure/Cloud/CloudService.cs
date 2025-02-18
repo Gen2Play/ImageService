@@ -30,9 +30,13 @@ public class CloudService : ICloudInterface
         var delete = new DeletionResult();
         try
         {
-            var deleteParams = new DeletionParams(publicID);
-
-            delete = await _cloudinary.DestroyAsync(deleteParams);
+            var deleteParams = new DelResParams()
+            {
+                PublicIds = new List<string> { publicID },
+                Type = "upload",
+                ResourceType = ResourceType.Image
+            };
+            var result = _cloudinary.DeleteResources(deleteParams);
             _logger.LogInformation($"Delete Image {publicID}");
         }
         catch (Exception ex)
@@ -40,6 +44,27 @@ public class CloudService : ICloudInterface
             LogException.LogExceptions(ex, ex.Message);
         }
         return delete;
+    }
+
+    public Task<RestoreResult> RestoreAsync(string publicID)
+    {
+        try
+        {
+            var restoreParams = new RestoreParams() { 
+                PublicIds = new List<string> { publicID },
+                ResourceType= ResourceType.Image,
+                Type = AssetType.Upload                
+            };
+            var restoreResult = _cloudinary.RestoreAsync(restoreParams);
+
+            _logger.LogInformation($"Restore Image {publicID}");
+            return restoreResult;
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            throw;
+        }
     }
 
     public async Task<ImageUploadResult> UploadImageAsync(IFormFile file)

@@ -12,4 +12,5 @@ public interface ICloudInterface
 {
     Task<ImageUploadResult> UploadImageAsync(IFormFile file);
     Task<DeletionResult> DeletionAsync(string publicID);
+    Task<RestoreResult> RestoreAsync(string publicID);
 }
