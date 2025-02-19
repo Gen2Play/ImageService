@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities;
+namespace Application.Image;
 
-public class Collection : AuditableEntity
+public class CreateCollectorRequest
 {
-    public Guid UserID { get; set; }
     [Required]
     public string Name { get; set; }
-    public bool isPublic { get; set; }
+    [Required]
+    public Guid UserID { get; set; }
+    public bool isPublic { get; set; } = true;
+    public Guid? ImageID { get; set; }
 }

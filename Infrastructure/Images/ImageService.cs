@@ -29,6 +29,57 @@ public class ImageService : IImageService
         _tagService = tagService;
     }
 
+    public async Task<Response> CreateCollectorAsync(CreateCollectorRequest request)
+    {
+        var transaction = _context.Database.BeginTransaction();
+        try
+        {
+            var exist = await _context.Collections.FirstOrDefaultAsync(p => p.Name ==  request.Name && p.UserID == request.UserID);
+
+            if (exist != null) {
+                throw new Exception("Collection đã tồn tại");
+            }
+
+            var col = _context.Collections.Add(new Collection
+            {
+                UserID = request.UserID,
+                Name = request.Name,
+                CreatedBy = request.UserID,
+                CreatedOn = DateTime.Now,
+                isPublic = request.isPublic
+            }).Entity;
+
+            if (request.ImageID != default)
+            {
+                var iExist = await _context.Images.FirstOrDefaultAsync(p => p.Id == request.ImageID);
+                if (iExist == null)
+                {
+                    throw new Exception("Image không tồn tại");
+                }
+                iExist.CollectionID = col.Id;
+            }
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+            return new Response
+            {
+                code = StatusCodes.Status200OK,
+                data = null,
+                message = "Xóa thành công"
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            await transaction.RollbackAsync();
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
+    }
+
     public async Task<Response> DeletePersonalImageAsync(DeleteImageRequest request)
     {
         var transaction = _context.Database.BeginTransaction();
@@ -77,7 +128,124 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetAllImageImageAsync(PaginationFilter filter)
+    public async Task<Response> GetAllByTagAsync(PaginationFilter filter, Guid id)
+    {
+        try
+        {
+            if (id == default)
+            {
+                return new Response
+                {
+                    code = StatusCodes.Status400BadRequest,
+                    data = null,
+                    message = "Thiếu thông tin Tag",
+                };
+            }
+            if (filter.PageNumber <= 0)
+            {
+                filter.PageNumber = 1;
+            }
+            if (filter.PageSize <= 0)
+            {
+                filter.PageSize = 10;
+            }
+            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
+            var query = await _context.Tags.AsNoTracking()
+                .Where(p => p.Id == id).Select(p => p.Id).Distinct().ToListAsync();
+
+            if (!String.IsNullOrEmpty(filter.KeySearch))
+            {
+                var tagIdsFromSearch = await _context.Tags
+                    .Where(t => t.Name.Contains(filter.KeySearch))
+                    .Select(t => t.Id).Distinct()
+                    .ToListAsync();
+
+                query.AddRange(tagIdsFromSearch);
+            }
+
+            var imageid = await _context.ImageTags
+                .Where(i => query.Contains(i.TagID))
+                .Select(i => i.ImageID).Distinct().ToListAsync();
+
+            var imageQuery = _context.Images.AsNoTracking()
+                .Where(img => imageid.Contains(img.Id));
+
+            if (filter.Order == "DESC")
+            {
+                imageQuery = imageQuery.OrderByDescending(img => img.CreatedOn);
+            }
+            else
+            {
+                imageQuery = imageQuery.OrderBy(img => img.CreatedOn);
+            }
+
+            if(filter.Orientation != Orientation.None)
+            {
+                imageQuery = imageQuery.Where(p => p.Orientation == filter.Orientation);
+            }
+            if (filter.SearchSizeRequest != null) {
+                imageQuery = imageQuery.Where(p => p.Height >= filter.SearchSizeRequest.Height && p.Width >= filter.SearchSizeRequest.Width);
+            }
+
+            if(filter.CreateAT != default)
+            {
+                imageQuery = imageQuery.Where(p => p.CreatedOn >= filter.CreateAT);
+            }
+
+            if (filter.CreatorType != CreatorType.None) {
+                imageQuery = imageQuery.Where(p => filter.CreatorType == CreatorType.Person ? p.isAIGen == false : p.isAIGen);
+            }
+
+            var images = imageQuery.ToList();
+
+            if (images != null) {
+                foreach (var image in images)
+                {
+                    var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == image.TypeID);
+                    imageListResponses.Add(new ImageListResponse
+                    {
+                        CollectionID = image.CollectionID,
+                        CreatorID = image.CreatorID,
+                        Description = image.Description,
+                        Download = image.Download,
+                        HasCollection = image.CollectionID != default,
+                        Height = image.Height,
+                        ImagePublicID = image.ImagePublicID,
+                        isAIGen = image.isAIGen,
+                        IsFavorite = await IsFavoriteImage(image.CreatorID, image.Id),
+                        Link = image.Link,
+                        Name = image.Name,
+                        Orientation = image.Orientation,
+                        size = image.size,
+                        Status = image.Status,
+                        TypeID = image.TypeID,
+                        TypeName = type.Name,
+                        View = image.View,
+                        Width = image.Width
+                    });
+                }
+            }
+
+            return new Response
+            {
+                code = 200,
+                data = imageListResponses,
+                message = string.Empty
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
+    }
+
+    public async Task<Response> GetAllImageImageAsync(PaginationFilter filter, Guid userID)
     {
         try
         {
@@ -86,9 +254,9 @@ public class ImageService : IImageService
 
             if (query.Any())
             {
-                if (filter.UserID != default)
+                if (userID != default)
                 {
-                    query = query.Where(p => p.CreatorID == filter.UserID);
+                    query = query.Where(p => p.CreatorID == userID);
                 }
                 if (filter.Order.Equals("DESC"))
                 {
@@ -155,11 +323,183 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetFavoriteImageAsync(PaginationFilter filter)
+    public async Task<Response> GetAllTagsync(PaginationFilter filter)
     {
         try
         {
-            if (filter.UserID == default)
+            var query = _context.Tags.AsNoTracking();
+
+            if (query != null) {
+                if (filter.Order.Equals("DESC"))
+                {
+                    query = query.OrderByDescending(p => p.CreatedOn);
+                }
+                else
+                {
+                    query = query.OrderBy(p => p.CreatedOn);
+                }
+
+                if (filter.PageNumber <= 0)
+                {
+                    filter.PageNumber = 1;
+                }
+                if (filter.PageSize <= 0)
+                {
+                    filter.PageSize = 10;
+                }
+
+                query = query
+                    .Skip((filter.PageNumber - 1) * filter.PageSize)
+                    .Take(filter.PageSize);
+
+                return new Response
+                {
+                    code = 200,
+                    data = query.ToList(),
+                    message = string.Empty
+                };
+
+            }
+
+            return new Response
+            {
+                code = 200,
+                data = null,
+                message = string.Empty
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
+    }
+
+    public async Task<Response> GetCollectorAsync(Guid id)
+    {
+        try
+        {
+            if(id == default)
+            {
+                throw new Exception("Thông tin user không hợp lệ");
+            }
+            var result = new List<CollectionByUserResponse>();
+            var collections = await _context.Collections
+                .Where(p => p.UserID == id).ToListAsync();
+
+            if(collections == null)
+            {
+                throw new Exception("Thông tin Collection không hợp lệ");
+            }
+
+            foreach( var collection in collections)
+            {
+                var images = await _context.Images.Where(p => p.CollectionID == collection.Id).Take(3).ToListAsync();
+
+                var r = new CollectionByUserResponse
+                {
+                    BackGroundImages = images.Select(p => p.Link).ToList(),
+                    CollectionID = collection.Id,
+                    IsPublic = collection.isPublic,
+                    Name = collection.Name,
+                    UserID = collection.UserID
+                };
+                result.Add(r);
+            }
+            return new Response
+            {
+                code = 200,
+                data = result,
+                message = string.Empty
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
+    }
+
+    public async Task<Response> GetCollectorByIDAsync(Guid id)
+    {
+        try
+        {
+            var collection = await _context.Collections
+                .Where(p => p.UserID == id).FirstOrDefaultAsync();
+
+            if (collection == null)
+            {
+                throw new Exception("Thông tin Collection không hợp lệ");
+            }
+
+            var images = await _context.Images.Where(p => p.CollectionID == collection.Id).ToListAsync();
+            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
+            foreach (var item in images) {
+                var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
+                imageListResponses.Add(new ImageListResponse
+                {
+                    CollectionID = item.CollectionID,
+                    CreatorID = item.CreatorID,
+                    Description = item.Description,
+                    Download = item.Download,
+                    HasCollection = item.CollectionID != default,
+                    Height = item.Height,
+                    ImagePublicID = item.ImagePublicID,
+                    isAIGen = item.isAIGen,
+                    IsFavorite = await IsFavoriteImage(item.CreatorID, item.Id),
+                    Link = item.Link,
+                    Name = item.Name,
+                    Orientation = item.Orientation,
+                    size = item.size,
+                    Status = item.Status,
+                    TypeID = item.TypeID,
+                    TypeName = type.Name,
+                    View = item.View,
+                    Width = item.Width
+                });
+            }
+            var r = new CollectionByIDResponse
+            {
+                CollectionID = collection.Id,
+                IsPublic = collection.isPublic,
+                Name = collection.Name,
+                UserID = collection.UserID,
+                Images = imageListResponses,
+            };
+            return new Response
+            {
+                code = 200,
+                data = r,
+                message = string.Empty
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
+    }
+
+    public async Task<Response> GetFavoriteImageAsync(PaginationFilter filter, Guid userID)
+    {
+        try
+        {
+            if (userID == default)
             {
                 return new Response
                 {
@@ -171,7 +511,7 @@ public class ImageService : IImageService
             List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
             var favs = await _context.FavoriteImages
                 .AsNoTracking()
-                .Where(p => p.UserID == filter.UserID)
+                .Where(p => p.UserID == userID)
                 .ToListAsync();
             if (favs.Count > 0) {
                 foreach (var fa in favs) { 
@@ -283,11 +623,11 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetImageByTypeAsync(PaginationFilter filter)
+    public async Task<Response> GetImageByTypeAsync(PaginationFilter filter, Guid id, Guid userID)
     {
         try
         {
-            if(filter.TypeID == default)
+            if(id == default)
             {
                 return new Response
                 {
@@ -301,11 +641,11 @@ public class ImageService : IImageService
 
             if (query.Any())
             {
-                if (filter.UserID != default)
+                if (userID != default)
                 {
-                    query = query.Where(p => p.CreatorID == filter.UserID);
+                    query = query.Where(p => p.CreatorID == userID);
                 }
-                query = query.Where(p => p.TypeID == filter.TypeID);
+                query = query.Where(p => p.TypeID == id);
                 if (filter.Order.Equals("DESC"))
                 {
                     query = query.OrderByDescending(p => p.CreatedOn);
@@ -372,7 +712,7 @@ public class ImageService : IImageService
         };
     }
 
-    public async Task<Response> GetImageInCollectionAsync(PaginationFilter filter)
+    public async Task<Response> GetImageInCollectionAsync(PaginationFilter filter, Guid userID, Guid collectionID)
     {
         try
         {
@@ -381,7 +721,7 @@ public class ImageService : IImageService
 
             if (query.Any())
             {
-                if (filter.UserID == default || filter.CollectionID == default)
+                if (userID == default || collectionID == default)
                 {
                     return new Response
                     {
@@ -390,7 +730,7 @@ public class ImageService : IImageService
                         message = "Thiếu thông tin Collection hoặc thông tin Creator",
                     };
                 }
-                query = query.Where(p => p.CreatorID == filter.UserID && p.CollectionID == filter.CollectionID);
+                query = query.Where(p => p.CreatorID == userID && p.CollectionID == collectionID);
                 if (filter.Order.Equals("DESC"))
                 {
                     query = query.OrderByDescending(p => p.CreatedOn);
@@ -456,7 +796,7 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetPersonalImageAsync(PaginationFilter filter)
+    public async Task<Response> GetPersonalImageAsync(PaginationFilter filter, Guid id)
     {
         try
         {
@@ -464,9 +804,9 @@ public class ImageService : IImageService
             var query = _context.Images.AsNoTracking();
 
             if (query.Any()) {
-                if(filter.UserID != default)
+                if(id != default)
                 {
-                    query = query.Where(p => p.CreatorID == filter.UserID);
+                    query = query.Where(p => p.CreatorID == id);
                 }
                 if (filter.Order.Equals("DESC"))
                 {
@@ -564,6 +904,46 @@ public class ImageService : IImageService
             isFavorite = true;
         }
         return isFavorite;
+    }
+
+    public async Task<Response> RemoveImageFromCollectorAsync(Guid id, Guid image)
+    {
+        var transaction = _context.Database.BeginTransaction();
+        try
+        {
+            if (id == default || image == default)
+            {
+                throw new Exception("Thông tin không hợp lệ");
+            }
+
+            var exist = await _context.Images.Where(p => p.Id == image && p.CollectionID == id).FirstOrDefaultAsync();
+            
+            if(exist == null)
+            {
+                throw new Exception("Ảnh không có trong Collection");
+            }
+
+            exist.CollectionID = default;
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+            return new Response
+            {
+                code = 200,
+                data = null,
+                message = "Xóa thành công"
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            transaction.RollbackAsync();
+            return new Response
+            {
+                code = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message,
+            };
+        }
     }
 
     //public async Task<bool> IsInCollection(Guid creatorID, Guid imageID)
