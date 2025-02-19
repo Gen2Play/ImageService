@@ -128,137 +128,28 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetAllByTagAsync(PaginationFilter filter, Guid id)
+    public async Task<Response> GetAllImageAsync(PaginationFilter request)
     {
         try
         {
-            if (id == default)
-            {
-                return new Response
-                {
-                    code = StatusCodes.Status400BadRequest,
-                    data = null,
-                    message = "Thiếu thông tin Tag",
-                };
-            }
-            if (filter.PageNumber <= 0)
-            {
-                filter.PageNumber = 1;
-            }
-            if (filter.PageSize <= 0)
-            {
-                filter.PageSize = 10;
-            }
-            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
-            var query = await _context.Tags.AsNoTracking()
-                .Where(p => p.Id == id).Select(p => p.Id).Distinct().ToListAsync();
+            List<Image> images = new List<Image>();
 
-            if (!String.IsNullOrEmpty(filter.KeySearch))
+            if (!String.IsNullOrEmpty(request.KeySearch))
             {
-                var tagIdsFromSearch = await _context.Tags
-                    .Where(t => t.Name.Contains(filter.KeySearch))
-                    .Select(t => t.Id).Distinct()
-                    .ToListAsync();
-
-                query.AddRange(tagIdsFromSearch);
-            }
-
-            var imageid = await _context.ImageTags
-                .Where(i => query.Contains(i.TagID))
-                .Select(i => i.ImageID).Distinct().ToListAsync();
-
-            var imageQuery = _context.Images.AsNoTracking()
-                .Where(img => imageid.Contains(img.Id));
-
-            if (filter.Order == "DESC")
-            {
-                imageQuery = imageQuery.OrderByDescending(img => img.CreatedOn);
+                images = await GetImageByTagNameAsync(request.KeySearch);
             }
             else
             {
-                imageQuery = imageQuery.OrderBy(img => img.CreatedOn);
+                images = await _context.Images.ToListAsync();
             }
-
-            if(filter.Orientation != Orientation.None)
+            var query = images.AsQueryable();
+            if(request.CreatorID != default)
             {
-                imageQuery = imageQuery.Where(p => p.Orientation == filter.Orientation);
+                query = query.Where(p => p.CreatorID == request.CreatorID);
             }
-            if (filter.SearchSizeRequest != null) {
-                imageQuery = imageQuery.Where(p => p.Height >= filter.SearchSizeRequest.Height && p.Width >= filter.SearchSizeRequest.Width);
-            }
-
-            if(filter.CreateAT != default)
+            if(request.Order != null)
             {
-                imageQuery = imageQuery.Where(p => p.CreatedOn >= filter.CreateAT);
-            }
-
-            if (filter.CreatorType != CreatorType.None) {
-                imageQuery = imageQuery.Where(p => filter.CreatorType == CreatorType.Person ? p.isAIGen == false : p.isAIGen);
-            }
-
-            var images = imageQuery.ToList();
-
-            if (images != null) {
-                foreach (var image in images)
-                {
-                    var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == image.TypeID);
-                    imageListResponses.Add(new ImageListResponse
-                    {
-                        CollectionID = image.CollectionID,
-                        CreatorID = image.CreatorID,
-                        Description = image.Description,
-                        Download = image.Download,
-                        HasCollection = image.CollectionID != default,
-                        Height = image.Height,
-                        ImagePublicID = image.ImagePublicID,
-                        isAIGen = image.isAIGen,
-                        IsFavorite = await IsFavoriteImage(image.CreatorID, image.Id),
-                        Link = image.Link,
-                        Name = image.Name,
-                        Orientation = image.Orientation,
-                        size = image.size,
-                        Status = image.Status,
-                        TypeID = image.TypeID,
-                        TypeName = type.Name,
-                        View = image.View,
-                        Width = image.Width
-                    });
-                }
-            }
-
-            return new Response
-            {
-                code = 200,
-                data = imageListResponses,
-                message = string.Empty
-            };
-        }
-        catch (Exception ex)
-        {
-            LogException.LogExceptions(ex, ex.Message);
-            return new Response
-            {
-                code = StatusCodes.Status500InternalServerError,
-                data = null,
-                message = ex.Message,
-            };
-        }
-    }
-
-    public async Task<Response> GetAllImageImageAsync(PaginationFilter filter, Guid userID)
-    {
-        try
-        {
-            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
-            var query = _context.Images.AsNoTracking();
-
-            if (query.Any())
-            {
-                if (userID != default)
-                {
-                    query = query.Where(p => p.CreatorID == userID);
-                }
-                if (filter.Order.Equals("DESC"))
+                if (request.Order.Equals("DESC"))
                 {
                     query = query.OrderByDescending(p => p.CreatedOn);
                 }
@@ -266,44 +157,62 @@ public class ImageService : IImageService
                 {
                     query = query.OrderBy(p => p.CreatedOn);
                 }
-                if (filter.PageNumber <= 0)
-                {
-                    filter.PageNumber = 1;
-                }
-                if (filter.PageSize <= 0)
-                {
-                    filter.PageSize = 10;
-                }
-                query = query
-                    .Skip((filter.PageNumber - 1) * filter.PageSize)
-                    .Take(filter.PageSize);
-
-                foreach (var item in query)
-                {
-                    var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
-                    imageListResponses.Add(new ImageListResponse
-                    {
-                        CollectionID = item.CollectionID,
-                        CreatorID = item.CreatorID,
-                        Description = item.Description,
-                        Download = item.Download,
-                        HasCollection = item.CollectionID != default,
-                        Height = item.Height,
-                        ImagePublicID = item.ImagePublicID,
-                        isAIGen = item.isAIGen,
-                        IsFavorite = await IsFavoriteImage(item.CreatorID, item.Id),
-                        Link = item.Link,
-                        Name = item.Name,
-                        Orientation = item.Orientation,
-                        size = item.size,
-                        Status = item.Status,
-                        TypeID = item.TypeID,
-                        TypeName = type.Name,
-                        View = item.View,
-                        Width = item.Width
-                    });
-                }
             }
+            if(request.Orientation != Orientation.None)
+            {
+                query = query.Where(p => p.Orientation == request.Orientation);
+            }
+
+            if (request.SearchSizeRequest != null) { 
+                query = query.Where(p => p.Height >= request.SearchSizeRequest.Height && p.Width >= request.SearchSizeRequest.Width);
+            }
+            if(request.CreateAT != default)
+            {
+                query = query.Where(p => p.CreatedOn >= request.CreateAT);
+            }
+
+            if(request.CreatorType != CreatorType.None)
+            {
+                query = query.Where(p => request.CreatorType == CreatorType.AI ? p.isAIGen : !p.isAIGen);
+            }
+            if (request.PageNumber <= 0)
+            {
+                request.PageNumber = 1;
+            }
+            if (request.PageSize <= 0)
+            {
+                request.PageSize = 10;
+            }
+            query = query.Skip((request.PageNumber - 1) * request.PageSize)
+                    .Take(request.PageSize);
+            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
+            foreach (var item in query)
+            {
+                var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
+                imageListResponses.Add(new ImageListResponse
+                {
+                    CollectionID = item.CollectionID,
+                    CreatorID = item.CreatorID,
+                    Description = item.Description,
+                    Download = item.Download,
+                    HasCollection = item.CollectionID != default,
+                    Height = item.Height,
+                    ImagePublicID = item.ImagePublicID,
+                    isAIGen = item.isAIGen,
+                    IsFavorite = await IsFavoriteImage(item.CreatorID, item.Id),
+                    Link = item.Link,
+                    Name = item.Name,
+                    Orientation = item.Orientation,
+                    size = item.size,
+                    Status = item.Status,
+                    TypeID = item.TypeID,
+                    TypeName = type.Name,
+                    View = item.View,
+                    Width = item.Width
+                });
+            }
+
+
             return new Response
             {
                 code = 200,
@@ -355,7 +264,7 @@ public class ImageService : IImageService
                 return new Response
                 {
                     code = 200,
-                    data = query.ToList(),
+                    data = await query.ToListAsync(),
                     message = string.Empty
                 };
 
@@ -623,93 +532,35 @@ public class ImageService : IImageService
         }
     }
 
-    public async Task<Response> GetImageByTypeAsync(PaginationFilter filter, Guid id, Guid userID)
+    public async Task<List<Image>> GetImageByTagNameAsync(string tag)
     {
         try
         {
-            if(id == default)
+            var tags = tag.Split(" ");
+            List<Image> images = new List<Image>();
+            foreach(var t in tags)
             {
-                return new Response
-                {
-                    code = StatusCodes.Status400BadRequest,
-                    data = null,
-                    message = "Thiếu thông tin Type"
-                };
-            }
-            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
-            var query = _context.Images.AsNoTracking();
+                var query = await _context.Tags.Where(p => p.Name.Contains(t) || p.Name.Contains(tag)).ToListAsync();
 
-            if (query.Any())
-            {
-                if (userID != default)
+                if(query.Count > 0)
                 {
-                    query = query.Where(p => p.CreatorID == userID);
-                }
-                query = query.Where(p => p.TypeID == id);
-                if (filter.Order.Equals("DESC"))
-                {
-                    query = query.OrderByDescending(p => p.CreatedOn);
-                }
-                else
-                {
-                    query = query.OrderBy(p => p.CreatedOn);
-                }
-                if (filter.PageNumber <= 0)
-                {
-                    filter.PageNumber = 1;
-                }
-                if (filter.PageSize <= 0)
-                {
-                    filter.PageSize = 10;
-                }
-                query = query
-                    .Skip((filter.PageNumber - 1) * filter.PageSize)
-                    .Take(filter.PageSize);
-
-                foreach (var item in query)
-                {
-                    var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
-                    imageListResponses.Add(new ImageListResponse
+                    foreach(var item in query)
                     {
-                        CollectionID = item.CollectionID,
-                        CreatorID = item.CreatorID,
-                        Description = item.Description,
-                        Download = item.Download,
-                        HasCollection = item.CollectionID != default,
-                        Height = item.Height,
-                        ImagePublicID = item.ImagePublicID,
-                        isAIGen = item.isAIGen,
-                        IsFavorite = await IsFavoriteImage(item.CreatorID, item.Id),
-                        Link = item.Link,
-                        Name = item.Name,
-                        Orientation = item.Orientation,
-                        size = item.size,
-                        Status = item.Status,
-                        TypeID = item.TypeID,
-                        TypeName = type.Name,
-                        View = item.View,
-                        Width = item.Width
-                    });
+                        var its = await _context
+                            .ImageTags
+                            .Where(p => p.TagID == item.Id)
+                            .Select(it => _context.Images.FirstOrDefault(p => p.Id == it.ImageID)).ToListAsync();
+                        images.AddRange(its);
+                    }
                 }
-                return new Response
-                {
-                    code = 200,
-                    data = imageListResponses,
-                    message = string.Empty
-                };
             }
-
+            return images;
         }
         catch (Exception ex)
         {
             LogException.LogExceptions(ex, ex.Message);
+            throw;
         }
-        return new Response
-        {
-            code = StatusCodes.Status200OK,
-            data = null,
-            message = string.Empty,
-        };
     }
 
     public async Task<Response> GetImageInCollectionAsync(PaginationFilter filter, Guid userID, Guid collectionID)
@@ -753,82 +604,6 @@ public class ImageService : IImageService
 
                 foreach (var item in query)
                 {
-                    var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
-                    imageListResponses.Add(new ImageListResponse
-                    {
-                        CollectionID = item.CollectionID,
-                        CreatorID = item.CreatorID,
-                        Description = item.Description,
-                        Download = item.Download,
-                        HasCollection = item.CollectionID != default,
-                        Height = item.Height,
-                        ImagePublicID = item.ImagePublicID,
-                        isAIGen = item.isAIGen,
-                        IsFavorite = await IsFavoriteImage(item.CreatorID, item.Id),
-                        Link = item.Link,
-                        Name = item.Name,
-                        Orientation = item.Orientation,
-                        size = item.size,
-                        Status = item.Status,
-                        TypeID = item.TypeID,
-                        TypeName = type.Name,
-                        View = item.View,
-                        Width = item.Width
-                    });
-                }
-            }
-            return new Response
-            {
-                code = 200,
-                data = imageListResponses,
-                message = string.Empty
-            };
-        }
-        catch (Exception ex)
-        {
-            LogException.LogExceptions(ex, ex.Message);
-            return new Response
-            {
-                code = StatusCodes.Status500InternalServerError,
-                data = null,
-                message = ex.Message,
-            };
-        }
-    }
-
-    public async Task<Response> GetPersonalImageAsync(PaginationFilter filter, Guid id)
-    {
-        try
-        {
-            List<ImageListResponse> imageListResponses = new List<ImageListResponse>();
-            var query = _context.Images.AsNoTracking();
-
-            if (query.Any()) {
-                if(id != default)
-                {
-                    query = query.Where(p => p.CreatorID == id);
-                }
-                if (filter.Order.Equals("DESC"))
-                {
-                    query = query.OrderByDescending(p => p.CreatedOn);
-                }
-                else
-                {
-                    query = query.OrderBy(p => p.CreatedOn);
-                }
-                if (filter.PageNumber <= 0)
-                {
-                    filter.PageNumber = 1;
-                }
-                if (filter.PageSize <= 0)
-                {
-                    filter.PageSize = 10;
-                }
-                query = query
-                    .Skip((filter.PageNumber - 1) * filter.PageSize)
-                    .Take(filter.PageSize);
-
-                foreach (var item in query) {
                     var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
                     imageListResponses.Add(new ImageListResponse
                     {

@@ -14,4 +14,6 @@ public class PaginationFilter
     public SearchSizeRequest? SearchSizeRequest { get; set; }
     public DateTime? CreateAT { get; set; }
     public CreatorType CreatorType { get; set; }
+    public Guid? TypeID { get; set; }
+    public Guid? CreatorID { get; set; }
 }

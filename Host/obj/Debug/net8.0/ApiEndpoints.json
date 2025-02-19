@@ -2,7 +2,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "CreateCollectorAsync",
-    "RelativePath": "api/Image/collector/create",
+    "RelativePath": "api/Image/collection/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -27,8 +27,91 @@
   },
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "GetCollectorByIDAsync",
+    "RelativePath": "api/Image/collection/id={id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "GetCollectorAsync",
+    "RelativePath": "api/Image/collection/user={id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "RemoveImageFromCollectorAsync",
+    "RelativePath": "api/Image/collection={id}/remove/image={image}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "image",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetByCollectionAsync",
-    "RelativePath": "api/Image/get-by-collection/{userID}/{collectionID}",
+    "RelativePath": "api/Image/get-by-collection/user={userID}/collection={collectionID}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -63,106 +146,8 @@
   },
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
-    "Method": "GetByCreatorAsync",
-    "RelativePath": "api/Image/get-by-creator/{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Application.Common.PaginationFilter",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Shared.Responses.Response",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Host.Controllers.ImageController.ImageController",
-    "Method": "GetAllByTagAsync",
-    "RelativePath": "api/Image/get-by-tag/{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Application.Common.PaginationFilter",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Shared.Responses.Response",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Host.Controllers.ImageController.ImageController",
-    "Method": "GetImageByTypeAsync",
-    "RelativePath": "api/Image/get-by-type/{typeId}/{userID}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Application.Common.PaginationFilter",
-        "IsRequired": true
-      },
-      {
-        "Name": "typeId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "userID",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Shared.Responses.Response",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetfavoriteImageAsync",
-    "RelativePath": "api/Image/get-favorite-image/{userID}",
+    "RelativePath": "api/Image/get-favorite-image/user={userID}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -218,8 +203,8 @@
   },
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
-    "Method": "GetAllAsync",
-    "RelativePath": "api/Image/getall/{userID}",
+    "Method": "GetAllImageAsync",
+    "RelativePath": "api/Image/getall",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -227,11 +212,6 @@
       {
         "Name": "request",
         "Type": "Application.Common.PaginationFilter",
-        "IsRequired": true
-      },
-      {
-        "Name": "userID",
-        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

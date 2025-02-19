@@ -20,13 +20,13 @@ public class ImageController : ControllerBase
         _logger = logger;
     }
 
-    [HttpPost("get-by-creator/{id:Guid}")]
-    public async Task<Response> GetByCreatorAsync([FromBody] PaginationFilter request, Guid id)
+    [HttpPost("getall")]
+    public async Task<Response> GetAllImageAsync([FromBody] PaginationFilter request)
     {
-        return await _imageService.GetPersonalImageAsync(request, id);
+        return await _imageService.GetAllImageAsync(request);
     }
 
-    [HttpPost("get-by-collection/{userID:Guid}/{collectionID:Guid}")]
+    [HttpPost("get-by-collection/user={userID:Guid}/collection={collectionID:Guid}")]
     public async Task<Response> GetByCollectionAsync([FromBody] PaginationFilter request, Guid userID, Guid collectionID)
     {
         return await _imageService.GetImageInCollectionAsync(request, userID, collectionID);
@@ -44,24 +44,11 @@ public class ImageController : ControllerBase
         return await _imageService.GetImageByIDAsync(id);
     }
 
-    [HttpPost("get-favorite-image/{userID:guid}")]
+    [HttpPost("get-favorite-image/user={userID:guid}")]
     public async Task<Response> GetfavoriteImageAsync([FromBody] PaginationFilter request, Guid userID)
     {
         return await _imageService.GetFavoriteImageAsync(request, userID);
     }
-
-    [HttpPost("get-by-type/{typeId:Guid}/{userID:Guid}")]
-    public async Task<Response> GetImageByTypeAsync([FromBody] PaginationFilter request, Guid typeId, Guid userID)
-    {
-        return await _imageService.GetImageByTypeAsync(request, typeId, userID);
-    }
-
-    [HttpPost("getall/{userID:guid}")]
-    public async Task<Response> GetAllAsync([FromBody] PaginationFilter request, Guid userID)
-    {
-        return await _imageService.GetAllImageImageAsync(request, userID);
-    }
-
     [HttpPost("upload")]
     public async Task<Response> UploadImageAsync([FromForm] UploadImageRequest request)
     {
@@ -80,25 +67,19 @@ public class ImageController : ControllerBase
         return await _imageService.GetAllTagsync(request);
     }
 
-    [HttpPost("get-by-tag/{id:guid}")]
-    public async Task<Response> GetAllByTagAsync([FromBody] PaginationFilter request, Guid id)
-    {
-        return await _imageService.GetAllByTagAsync(request, id);
-    }
-
     [HttpPost("collection/create")]
     public async Task<Response> CreateCollectorAsync([FromBody] CreateCollectorRequest request)
     {
         return await _imageService.CreateCollectorAsync(request);
     }
 
-    [HttpGet("collection/get-by-userid/{id:guid}")]
+    [HttpGet("collection/user={id:guid}")]
     public async Task<Response> GetCollectorAsync(Guid id)
     {
         return await _imageService.GetCollectorAsync(id);
     }
 
-    [HttpGet("collection/get-by-id/{id:guid}")]
+    [HttpGet("collection/id={id:guid}")]
     public async Task<Response> GetCollectorByIDAsync(Guid id)
     {
         return await _imageService.GetCollectorByIDAsync(id);
