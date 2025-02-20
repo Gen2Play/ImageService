@@ -2,6 +2,7 @@
 
 public enum ImageStatus
 {
+    Waiting,
     UnAccept,
     Accept
 }

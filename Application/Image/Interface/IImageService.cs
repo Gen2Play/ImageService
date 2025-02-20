@@ -25,5 +25,8 @@ public interface IImageService
     Task<Response> RemoveImageFromCollectorAsync(Guid id, Guid image);
     Task<Response> GetAllImageAsync(PaginationFilter request);
     Task<List<Domain.Entities.Image>> GetImageByTagNameAsync(string tag);
+    Task<Response> AddImageToFavAsync(AddImageToFavRequest request);
+    Task<Response> GetImageToVerifyAsync();
+    Task<Response> ChangeStatusAsync(UpdateImageStatus request);
     //Task<bool> IsInCollection(Guid creatorID, Guid imageID);
 }

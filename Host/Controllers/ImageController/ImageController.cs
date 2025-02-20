@@ -90,4 +90,22 @@ public class ImageController : ControllerBase
     {
         return await _imageService.RemoveImageFromCollectorAsync(id, image);
     }
+
+    [HttpPost("favorite/add")]
+    public async Task<Response> AddImageToFavAsync(AddImageToFavRequest request)
+    {
+        return await _imageService.AddImageToFavAsync(request);
+    }
+
+    [HttpGet("checking")]
+    public async Task<Response> GetImageToVerifyAsync()
+    {
+        return await _imageService.GetImageToVerifyAsync();
+    }
+
+    [HttpPost("change-status")]
+    public async Task<Response> ChangeStatusAsync(UpdateImageStatus request)
+    {
+        return await _imageService.ChangeStatusAsync(request);
+    }
 }

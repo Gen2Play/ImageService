@@ -29,6 +29,89 @@ public class ImageService : IImageService
         _tagService = tagService;
     }
 
+    public async Task<Response> AddImageToFavAsync(AddImageToFavRequest request)
+    {
+        var transaction = _context.Database.BeginTransaction();
+        try
+        {
+            var exist = await _context.Images.FirstOrDefaultAsync(p => p.Id == request.ImageID);
+            if (exist == null)
+            {
+                throw new Exception("Hình ảnh không tồn tại");
+            }
+
+            var fav_e = await _context.FavoriteImages.FirstOrDefaultAsync(p => p.UserID == request.UserID && p.ImageID == request.ImageID);
+            if (fav_e != null) {
+                return new Response
+                {
+                    status = StatusCodes.Status200OK,
+                    data = null,
+                    message = "Hình ảnh đã được thêm vào yêu thích"
+                };
+            }
+
+            await _context.FavoriteImages.AddAsync(new FavoriteImage
+            {
+                UserID = request.UserID,
+                ImageID = request.ImageID,
+                CreatedBy = request.UserID,
+                CreatedOn = DateTime.Now,
+            });
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+
+            return new Response
+            {
+                status = StatusCodes.Status201Created,
+                data = null,
+                message = "Success"
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            await transaction.RollbackAsync();
+            return new Response
+            {
+                status = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message
+            };
+        }
+    }
+
+    public async Task<Response> ChangeStatusAsync(UpdateImageStatus request)
+    {
+        var transaction = _context.Database.BeginTransaction();
+        try
+        {
+            var exist = await _context.Images.FirstOrDefaultAsync(p => p.Id == request.ImageId);
+            if (exist != null) {
+                exist.Status = request.Status;
+            }
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+
+            return new Response
+            {
+                data = null,
+                message = string.Empty,
+                status = 200
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            await transaction.RollbackAsync();
+            return new Response
+            {
+                status = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message
+            };
+        }
+    }
+
     public async Task<Response> CreateCollectorAsync(CreateCollectorRequest request)
     {
         var transaction = _context.Database.BeginTransaction();
@@ -62,7 +145,7 @@ public class ImageService : IImageService
             await transaction.CommitAsync();
             return new Response
             {
-                code = StatusCodes.Status200OK,
+                status = StatusCodes.Status200OK,
                 data = null,
                 message = "Xóa thành công"
             };
@@ -73,7 +156,7 @@ public class ImageService : IImageService
             await transaction.RollbackAsync();
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -89,7 +172,7 @@ public class ImageService : IImageService
             if (image == null) {
                 return new Response
                 {
-                    code = StatusCodes.Status404NotFound,
+                    status = StatusCodes.Status404NotFound,
                     data = null,
                     message = "Không thể tìm thấy ảnh"
                 };
@@ -99,7 +182,7 @@ public class ImageService : IImageService
             {
                 return new Response
                 {
-                    code = (int)cloudDelete.StatusCode,
+                    status = (int)cloudDelete.StatusCode,
                     data = null,
                     message = cloudDelete.Error.Message
                 };
@@ -109,7 +192,7 @@ public class ImageService : IImageService
             await transaction.CommitAsync();
             return new Response
             {
-                code = StatusCodes.Status200OK,
+                status = StatusCodes.Status200OK,
                 data = null,
                 message = "Xóa thành công"
             };
@@ -121,7 +204,7 @@ public class ImageService : IImageService
             await transaction.RollbackAsync();
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -142,7 +225,7 @@ public class ImageService : IImageService
             {
                 images = await _context.Images.ToListAsync();
             }
-            var query = images.AsQueryable();
+            var query = images.Where(p => p.Status == ImageStatus.Accept);
             if(request.CreatorID != default)
             {
                 query = query.Where(p => p.CreatorID == request.CreatorID);
@@ -191,6 +274,7 @@ public class ImageService : IImageService
                 var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
                 imageListResponses.Add(new ImageListResponse
                 {
+                    ImageID = item.Id,
                     CollectionID = item.CollectionID,
                     CreatorID = item.CreatorID,
                     Description = item.Description,
@@ -215,7 +299,7 @@ public class ImageService : IImageService
 
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = imageListResponses,
                 message = string.Empty
             };
@@ -225,7 +309,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -263,7 +347,7 @@ public class ImageService : IImageService
 
                 return new Response
                 {
-                    code = 200,
+                    status = 200,
                     data = await query.ToListAsync(),
                     message = string.Empty
                 };
@@ -272,7 +356,7 @@ public class ImageService : IImageService
 
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = null,
                 message = string.Empty
             };
@@ -282,7 +366,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -322,7 +406,7 @@ public class ImageService : IImageService
             }
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = result,
                 message = string.Empty
             };
@@ -332,7 +416,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -357,6 +441,7 @@ public class ImageService : IImageService
                 var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
                 imageListResponses.Add(new ImageListResponse
                 {
+                    ImageID = item.Id,
                     CollectionID = item.CollectionID,
                     CreatorID = item.CreatorID,
                     Description = item.Description,
@@ -387,7 +472,7 @@ public class ImageService : IImageService
             };
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = r,
                 message = string.Empty
             };
@@ -397,7 +482,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -412,7 +497,7 @@ public class ImageService : IImageService
             {
                 return new Response
                 {
-                    code = StatusCodes.Status400BadRequest,
+                    status = StatusCodes.Status400BadRequest,
                     data = null,
                     message = "Thiếu thông tin người dùng",
                 };
@@ -428,6 +513,7 @@ public class ImageService : IImageService
                     var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
                     imageListResponses.Add(new ImageListResponse
                     {
+                        ImageID = item.Id,
                         CollectionID = item.CollectionID,
                         CreatorID = item.CreatorID,
                         Description = item.Description,
@@ -451,7 +537,7 @@ public class ImageService : IImageService
             }
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = imageListResponses,
                 message = string.Empty
             };
@@ -461,7 +547,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -476,7 +562,7 @@ public class ImageService : IImageService
             {
                 return new Response
                 {
-                    code = StatusCodes.Status400BadRequest,
+                    status = StatusCodes.Status400BadRequest,
                     data = null,
                     message = "Thiếu thông tin Image",
                 };
@@ -487,6 +573,7 @@ public class ImageService : IImageService
                 var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == image.TypeID);
                 var i = new ImageListResponse
                 {
+                    ImageID = image.Id,
                     CollectionID = image.CollectionID,
                     CreatorID = image.CreatorID,
                     Description = image.Description,
@@ -508,14 +595,14 @@ public class ImageService : IImageService
                 };
                 return new Response
                 {
-                    code = 200,
+                    status = 200,
                     data = i,
                     message = string.Empty
                 };
             }
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = null,
                 message = string.Empty
             };
@@ -525,7 +612,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -537,6 +624,7 @@ public class ImageService : IImageService
         try
         {
             var tags = tag.Split(" ");
+            HashSet<Guid> imageIds = new HashSet<Guid>();
             List<Image> images = new List<Image>();
             foreach(var t in tags)
             {
@@ -549,8 +637,19 @@ public class ImageService : IImageService
                         var its = await _context
                             .ImageTags
                             .Where(p => p.TagID == item.Id)
-                            .Select(it => _context.Images.FirstOrDefault(p => p.Id == it.ImageID)).ToListAsync();
-                        images.AddRange(its);
+                            .Select(it => it.ImageID).ToListAsync();
+                        foreach (var imageId in its)
+                        {
+                            if (!imageIds.Contains(imageId))
+                            {
+                                var image = await _context.Images.FirstOrDefaultAsync(p => p.Id == imageId);
+                                if (image != null)
+                                {
+                                    images.Add(image);
+                                    imageIds.Add(imageId);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -576,7 +675,7 @@ public class ImageService : IImageService
                 {
                     return new Response
                     {
-                        code = StatusCodes.Status400BadRequest,
+                        status = StatusCodes.Status400BadRequest,
                         data = null,
                         message = "Thiếu thông tin Collection hoặc thông tin Creator",
                     };
@@ -607,6 +706,7 @@ public class ImageService : IImageService
                     var type = await _context.Types.FirstOrDefaultAsync(p => p.Id == item.TypeID);
                     imageListResponses.Add(new ImageListResponse
                     {
+                        ImageID = item.Id,
                         CollectionID = item.CollectionID,
                         CreatorID = item.CreatorID,
                         Description = item.Description,
@@ -630,7 +730,7 @@ public class ImageService : IImageService
             }
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = imageListResponses,
                 message = string.Empty
             };
@@ -640,9 +740,34 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
+            };
+        }
+    }
+
+    public async Task<Response> GetImageToVerifyAsync()
+    {
+        try
+        {
+            var result = await _context.Images.Where(p => p.Status == ImageStatus.Waiting).ToListAsync();
+
+            return new Response
+            {
+                data = result,
+                message = string.Empty,
+                status = 200
+            };
+        }
+        catch (Exception ex)
+        {
+            LogException.LogExceptions(ex, ex.Message);
+            return new Response
+            {
+                status = StatusCodes.Status500InternalServerError,
+                data = null,
+                message = ex.Message
             };
         }
     }
@@ -654,7 +779,7 @@ public class ImageService : IImageService
             var types = await _context.Types.ToListAsync();
             return new Response
             {
-                code = StatusCodes.Status201Created,
+                status = StatusCodes.Status201Created,
                 data = types,
                 message = "Success"
             };
@@ -664,7 +789,7 @@ public class ImageService : IImageService
             LogException.LogExceptions(ex, ex.Message);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message
             };
@@ -703,7 +828,7 @@ public class ImageService : IImageService
             await transaction.CommitAsync();
             return new Response
             {
-                code = 200,
+                status = 200,
                 data = null,
                 message = "Xóa thành công"
             };
@@ -714,7 +839,7 @@ public class ImageService : IImageService
             transaction.RollbackAsync();
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message,
             };
@@ -737,7 +862,7 @@ public class ImageService : IImageService
             if (cloudUpload == null) {
                 return new Response
                 {
-                    code = StatusCodes.Status400BadRequest,
+                    status = StatusCodes.Status400BadRequest,
                     data = null,
                     message = "Không thể upload ảnh"
                 };
@@ -758,7 +883,7 @@ public class ImageService : IImageService
                 size = cloudUpload.Bytes,
                 Width = cloudUpload.Width,
                 Orientation = cloudUpload.Width > cloudUpload.Height ? Orientation.Horizontal : Orientation.Vertical,
-                Status = ImageStatus.UnAccept,
+                Status = ImageStatus.Waiting,
                 View = 0,
                 TypeID = type.Id,
             };
@@ -805,7 +930,7 @@ public class ImageService : IImageService
             await transaction.CommitAsync();
             return new Response
             {
-                code = StatusCodes.Status201Created,
+                status = StatusCodes.Status201Created,
                 data = null,
                 message = "Upload ảnh thành công"
             };
@@ -817,7 +942,7 @@ public class ImageService : IImageService
             await _cloudInterface.DeletionAsync(publicid);
             return new Response
             {
-                code = StatusCodes.Status500InternalServerError,
+                status = StatusCodes.Status500InternalServerError,
                 data = null,
                 message = ex.Message
             };

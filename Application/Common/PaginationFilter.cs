@@ -10,7 +10,7 @@ public class PaginationFilter
     public int PageSize { get; set; } = int.MaxValue;
     public string Order { get; set; } = "DESC";
     public string? KeySearch { get; set; }
-    public Orientation? Orientation { get; set; }
+    public Orientation Orientation { get; set; }
     public SearchSizeRequest? SearchSizeRequest { get; set; }
     public DateTime? CreateAT { get; set; }
     public CreatorType CreatorType { get; set; }

@@ -10,6 +10,7 @@ namespace Application.Image;
 
 public class ImageListResponse
 {
+    public Guid ImageID { get; set; }
     public Guid CreatorID { get; set; }
     public Guid TypeID { get; set; }
     public string TypeName { get; set; }

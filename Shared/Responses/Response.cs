@@ -10,5 +10,5 @@ public class Response
 {
     public object? data { get; set; }
     public string message { get; set; }
-    public int code { get; set; }
+    public int status { get; set; }
 }

@@ -1,6 +1,52 @@
 [
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "ChangeStatusAsync",
+    "RelativePath": "api/Image/change-status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Image.UpdateImageStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "GetImageToVerifyAsync",
+    "RelativePath": "api/Image/checking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "CreateCollectorAsync",
     "RelativePath": "api/Image/collection/create",
     "HttpMethod": "POST",
@@ -93,6 +139,32 @@
       {
         "Name": "image",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "AddImageToFavAsync",
+    "RelativePath": "api/Image/favorite/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Image.AddImageToFavRequest",
         "IsRequired": true
       }
     ],
