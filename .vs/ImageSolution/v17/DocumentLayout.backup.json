@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\C#\\API\\Gen2Play\\ImageSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\images\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|NewFolder1{C2D139C8-B723-4F07-ADFA-C00457319484}|D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|NewFolder1{C2D139C8-B723-4F07-ADFA-C00457319484}|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\common\\paginationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\common\\paginationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\auth\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\auth\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\auth\\musthavepermissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\auth\\musthavepermissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 155,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +46,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImageService.cs",
-              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Images\\ImageService.cs",
-              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\ImageService.cs",
-              "RelativeToolTip": "Infrastructure\\Images\\ImageService.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwGUBAACAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Program.cs",
+              "RelativeDocumentMoniker": "Host\\Program.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Program.cs",
+              "RelativeToolTip": "Host\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T01:28:02.048Z",
+              "WhenOpened": "2025-02-21T02:45:27.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MustHavePermissionAttribute.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Auth\\MustHavePermissionAttribute.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Auth\\MustHavePermissionAttribute.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Auth\\MustHavePermissionAttribute.cs",
+              "RelativeToolTip": "Infrastructure\\Auth\\MustHavePermissionAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T02:43:06.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Permission.cs",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Auth\\Permission.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Auth\\Permission.cs",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Auth\\Permission.cs",
+              "RelativeToolTip": "Infrastructure\\Auth\\Permission.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAzwB0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T02:42:40.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-21T02:17:33.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PaginationResponse.cs",
-              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Common\\PaginationResponse.cs",
-              "RelativeDocumentMoniker": "Application\\Common\\PaginationResponse.cs",
-              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Common\\PaginationResponse.cs",
-              "RelativeToolTip": "Application\\Common\\PaginationResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T01:25:06.927Z",
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Dockerfile",
+              "RelativeDocumentMoniker": "Host\\Dockerfile",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Dockerfile",
+              "RelativeToolTip": "Host\\Dockerfile",
+              "ViewState": "AgIAABQAAACAY2ZmZmYkwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-21T02:13:16.675Z",
               "EditorCaption": ""
             }
           ]
