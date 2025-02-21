@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\C#\\API\\Gen2Play\\ImageSolution\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 155,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,19 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "Host\\appsettings.Development.json",
-              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.Development.json",
-              "RelativeToolTip": "Host\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-20T04:26:12.928Z",
-              "EditorCaption": ""
             }
           ]
         },

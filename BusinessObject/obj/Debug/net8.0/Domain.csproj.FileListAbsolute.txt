@@ -1,0 +1,12 @@
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\bin\Debug\net8.0\Domain.deps.json
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\bin\Debug\net8.0\Domain.dll
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\bin\Debug\net8.0\Domain.pdb
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.sourcelink.json
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.dll
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\refint\Domain.dll
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\Domain.pdb
+D:\C#\API\Gen2Play\ImageSolution\BusinessObject\obj\Debug\net8.0\ref\Domain.dll

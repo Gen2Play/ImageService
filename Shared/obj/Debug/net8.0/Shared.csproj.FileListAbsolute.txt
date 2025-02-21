@@ -1,0 +1,15 @@
+D:\C#\API\Gen2Play\ImageSolution\Shared\bin\Debug\net8.0\Shared.deps.json
+D:\C#\API\Gen2Play\ImageSolution\Shared\bin\Debug\net8.0\Shared.runtimeconfig.json
+D:\C#\API\Gen2Play\ImageSolution\Shared\bin\Debug\net8.0\Shared.dll
+D:\C#\API\Gen2Play\ImageSolution\Shared\bin\Debug\net8.0\Shared.pdb
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.csproj.AssemblyReference.cache
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.AssemblyInfoInputs.cache
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.AssemblyInfo.cs
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.csproj.CoreCompileInputs.cache
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.sourcelink.json
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.dll
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\refint\Shared.dll
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.pdb
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\Shared.genruntimeconfig.cache
+D:\C#\API\Gen2Play\ImageSolution\Shared\obj\Debug\net8.0\ref\Shared.dll

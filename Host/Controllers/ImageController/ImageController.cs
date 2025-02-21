@@ -1,7 +1,6 @@
 ﻿using Application.Common;
 using Application.Image;
 using Application.Image.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Responses;
 
@@ -107,5 +106,10 @@ public class ImageController : ControllerBase
     public async Task<Response> ChangeStatusAsync(UpdateImageStatus request)
     {
         return await _imageService.ChangeStatusAsync(request);
+    }
+    [HttpPost("feedback")]
+    public async Task<Response> FeedbackAsync(AddFeedbackRequest request)
+    {
+        return await _imageService.FeedbackAsync(request);
     }
 }

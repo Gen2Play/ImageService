@@ -1,0 +1,14 @@
+services:
+  image-service:
+    image: ${DOCKER_REGISTRY-}image-api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Host/Dockerfile
+    container_name: imageservice
+    environment:
+      - ASPNET_ENVIRONMENT=Development
+      - ASPNET_CORE_URL=http://8080
+      - "ConnectionStrings:eCommerceConnection=Host=dpg-cuoub45svqrc73esqug0-a.singapore-postgres.render.com;Port=5432;Database=imageservice;Username=root;Password=ZRHSGQzjqVp7Ry999Xar08c3g64sInqN;Include Error Detail=true"
+    ports:
+      - "5221:8080"
+    restart: always

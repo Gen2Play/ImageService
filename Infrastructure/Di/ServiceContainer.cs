@@ -41,7 +41,6 @@ public static class ServiceContainer
     public static IApplicationBuilder UseInFrastructure(this IApplicationBuilder app)
     {
         SharedServiceContainer.UseSharedPolicies(app);
-
         return app;
     }
     public static async Task InitializeDatabasesAsync(this IServiceProvider services, CancellationToken cancellationToken = default)

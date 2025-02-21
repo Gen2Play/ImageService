@@ -29,4 +29,6 @@ public class ImageListResponse
     public bool isAIGen { get; set; }
     public ImageStatus Status { get; set; }
     public Orientation Orientation { get; set; }
+    public DateTime CreateAt { get; set; }
+    public List<FeedbackResponse>? FeedbackResponses { get; set; }
 }

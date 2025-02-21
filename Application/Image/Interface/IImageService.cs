@@ -28,5 +28,7 @@ public interface IImageService
     Task<Response> AddImageToFavAsync(AddImageToFavRequest request);
     Task<Response> GetImageToVerifyAsync();
     Task<Response> ChangeStatusAsync(UpdateImageStatus request);
+    Task<Response> FeedbackAsync(AddFeedbackRequest request);
+    Task<List<FeedbackResponse>> GetFeedbackInImage(Guid imageID);
     //Task<bool> IsInCollection(Guid creatorID, Guid imageID);
 }
