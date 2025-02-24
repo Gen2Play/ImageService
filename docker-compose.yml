@@ -10,5 +10,5 @@ services:
       - ASPNET_CORE_URL=http://8090
       - "ConnectionStrings:Connection=Host=dpg-cuoub45svqrc73esqug0-a.singapore-postgres.render.com;Port=5432;Database=imageservice;Username=root;Password=ZRHSGQzjqVp7Ry999Xar08c3g64sInqN;Include Error Detail=true"
     ports:
-      - "5220:8090"
+      - "5220:5220"
     restart: always
