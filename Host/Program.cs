@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5220";
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructureService(builder.Configuration);
@@ -19,16 +20,17 @@ builder.Services.AddDiscoveryClient(builder.Configuration);
 builder.Environment.ApplicationName = builder.Configuration["Application:Name"];
 
 var app = builder.Build();
+app.Urls.Add($"http://*:{port}");
 app.Services.InitializeDatabasesAsync().Wait();
 app.UseInFrastructure();
 Console.WriteLine($"Application Name: {app.Environment.ApplicationName}");
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    
-//}
-app.UseSwagger();
-app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseHealthChecks("/health");
 
 //app.UseDiscoveryClient();
