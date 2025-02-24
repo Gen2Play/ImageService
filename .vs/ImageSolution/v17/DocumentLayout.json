@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\C#\\API\\Gen2Play\\ImageSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,14 +47,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
-              "RelativeDocumentMoniker": "Host\\appsettings.json",
-              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
-              "RelativeToolTip": "Host\\appsettings.json",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACoAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-24T08:10:42.371Z",
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-24T09:03:55.409Z",
               "EditorCaption": ""
             },
             {

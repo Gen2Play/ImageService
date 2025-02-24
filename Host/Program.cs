@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructureService(builder.Configuration);
-
+builder.Services.AddHealthChecks();
 builder.Services.AddDiscoveryClient(builder.Configuration);
 //builder.Services.AddAuthentication();
 builder.Environment.ApplicationName = builder.Configuration["Application:Name"];
@@ -28,6 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHealthChecks("/health");
 
 //app.UseDiscoveryClient();
 
