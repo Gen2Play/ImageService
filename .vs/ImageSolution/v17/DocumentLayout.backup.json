@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|D:\\C#\\API\\Gen2Play\\ImageSolution\\railway.toml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|solutionrelative:railway.toml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C2D139C8-B723-4F07-ADFA-C00457319484}|SolutionItem{C2D139C8-B723-4F07-ADFA-C00457319484}|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\image\\generateimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\image\\generateimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|d:\\c#\\api\\gen2play\\imagesolution\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5A53349-A252-44F4-B705-A2659628E354}|Host\\Host.csproj|solutionrelative:host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\images\\generateimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\images\\generateimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|d:\\c#\\api\\gen2play\\imagesolution\\application\\image\\generateimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C53B274F-6F56-4B46-91D1-0A0973E2656C}|Application\\Application.csproj|solutionrelative:application\\image\\generateimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9DD0238A-2398-4816-93F2-F510FECFE951}|Infrastructure\\Infrastructure.csproj|d:\\c#\\api\\gen2play\\imagesolution\\infrastructure\\cloud\\cloudservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 155,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,33 +62,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Host\\appsettings.Development.json",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.Development.json",
+              "RelativeToolTip": "Host\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-24T14:00:25.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
               "RelativeDocumentMoniker": "Host\\appsettings.json",
               "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\appsettings.json",
               "RelativeToolTip": "Host\\appsettings.json",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACoAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-24T08:10:42.371Z",
+              "WhenOpened": "2025-02-24T14:00:19.618Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "railway.toml",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\railway.toml",
+              "RelativeDocumentMoniker": "railway.toml",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\railway.toml",
+              "RelativeToolTip": "railway.toml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKOSURBVDhPtZTBTlpBFIZ/QTDQVqVCaFCjELQr2ek7GNOGpi5qmtjYtD6JL\u002BDKR6ALm1DSbt0a41INurBpXBCgQhVFEeXS/5/cS7hqTJu0f/JxmXvPnJkz55zBP1W73e6x/zrykTB5RLx68YBapE6OybVeSN0OQ\u002BQlSZM48ZOH1CQ/SI5kSZV0pJ29IwWila0/RLZF8oHIR0fPiFa548zn81nT09NWJBKxPB6P65uN5nwlMQKPfqgnZJx0joCTMTY2huXlZczMzCAQCGBqagoDAwPo6XEdvQY6oscaOAcfIW\u002BJEoJYLIbZ2Vmk02kMDg6iWq2iWCya9xMTEwiFQrAsC2dnZzKXauQTOXaWek4Usp6Yn5/H4uIi4vG4KgEXFxeoVCro6\u002BuD3\u002B9Hq9VCNpvF6uqqzKXv5AXJOzvUzt7YT4TDYZyfnxsHqVTK7EqMjo5iaGjIOFxfX8fBwYHMpV8kQ47vdTgyMoLT01MzYWtrC/39/YhGozg5OcHl5SUymQw2NzdRKpVkLnUcOklxyev14ubmBvV6HUdHR1hbW0O5XEaz2cTu7i42NjbQaDRsa7fuddjb24tgMGjCSyaTJlQl4erqCjs7O6jVari\u002B7jSHS/c6dEpkcnISrD/jWMlRuIlEAgsLCxgfV5XdVbfDtv3E9va2CXV4eNiUipwqEToGlUyhUMD\u002B/r5tbaS5Zr6TlKfkNYlqoLPL5/M4PDw0Icuh2Nvbw8rKCnK5nElal5Qd1WHFjCi13hdyp/VYd9bc3Jy1tLRk8Vxd37r4RkzrOVJjvydq9L\u002B9HMrkIzG3U3dTKuxXNupNLeJq2i7pvJRmXV\u002BK7DMx4d6eoFVU3Gp0J2G3bZzkaYe6YH8S3Y3/Q8Bv/swBV8Rtel0AAAAASUVORK5CYII=",
+              "WhenOpened": "2025-02-24T13:57:33.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Dockerfile",
+              "RelativeDocumentMoniker": "Host\\Dockerfile",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Dockerfile",
+              "RelativeToolTip": "Host\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-24T13:39:33.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-24T09:03:55.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Program.cs",
               "RelativeDocumentMoniker": "Host\\Program.cs",
               "ToolTip": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Host\\Program.cs",
               "RelativeToolTip": "Host\\Program.cs",
-              "ViewState": "AgIAAAUAAAAAzczMzMwjwBIAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAzczMzMwjwA4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T07:36:39.12Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GenerateImageRequest.cs",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Application\\Image\\GenerateImageRequest.cs",
               "RelativeDocumentMoniker": "Application\\Image\\GenerateImageRequest.cs",
@@ -85,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "CloudService.cs",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Cloud\\CloudService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Cloud\\CloudService.cs",
@@ -93,12 +161,11 @@
               "RelativeToolTip": "Infrastructure\\Cloud\\CloudService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:18:45.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T07:18:45.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "GenerateImageService.cs",
               "DocumentMoniker": "D:\\C#\\API\\Gen2Play\\ImageSolution\\Infrastructure\\Images\\GenerateImageService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Images\\GenerateImageService.cs",
@@ -106,8 +173,7 @@
               "RelativeToolTip": "Infrastructure\\Images\\GenerateImageService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAqwBgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T06:31:30.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T06:31:30.095Z"
             }
           ]
         },

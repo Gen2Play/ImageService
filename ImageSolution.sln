@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItem", "SolutionItem", "{C2D139C8-B723-4F07-ADFA-C00457319484}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		railway.toml = railway.toml
 	EndProjectSection
 EndProject
 Global
