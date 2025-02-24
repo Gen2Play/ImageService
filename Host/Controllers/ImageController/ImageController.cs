@@ -6,7 +6,7 @@ using Shared.Responses;
 
 namespace Host.Controllers.ImageController;
 
-[Route("api/[controller]")]
+[Route("api/image")]
 [ApiController]
 public class ImageController : ControllerBase
 {
