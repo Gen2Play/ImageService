@@ -25,11 +25,8 @@ app.Services.InitializeDatabasesAsync().Wait();
 app.UseInFrastructure();
 Console.WriteLine($"Application Name: {app.Environment.ApplicationName}");
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHealthChecks("/health");
 
