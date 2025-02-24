@@ -2,7 +2,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "ChangeStatusAsync",
-    "RelativePath": "api/Image/change-status",
+    "RelativePath": "api/image/change-status",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -28,7 +28,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetImageToVerifyAsync",
-    "RelativePath": "api/Image/checking",
+    "RelativePath": "api/image/checking",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -48,7 +48,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "CreateCollectorAsync",
-    "RelativePath": "api/Image/collection/create",
+    "RelativePath": "api/image/collection/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -74,7 +74,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetCollectorByIDAsync",
-    "RelativePath": "api/Image/collection/id={id}",
+    "RelativePath": "api/image/collection/id={id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -100,7 +100,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetCollectorAsync",
-    "RelativePath": "api/Image/collection/user={id}",
+    "RelativePath": "api/image/collection/user={id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -126,7 +126,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "RemoveImageFromCollectorAsync",
-    "RelativePath": "api/Image/collection={id}/remove/image={image}",
+    "RelativePath": "api/image/collection={id}/remove/image={image}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -157,7 +157,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "AddImageToFavAsync",
-    "RelativePath": "api/Image/favorite/add",
+    "RelativePath": "api/image/favorite/add",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -183,7 +183,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "FeedbackAsync",
-    "RelativePath": "api/Image/feedback",
+    "RelativePath": "api/image/feedback",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -209,7 +209,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GenerateImageAsync",
-    "RelativePath": "api/Image/generate",
+    "RelativePath": "api/image/generate",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -235,7 +235,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetByCollectionAsync",
-    "RelativePath": "api/Image/get-by-collection/user={userID}/collection={collectionID}",
+    "RelativePath": "api/image/get-by-collection/user={userID}/collection={collectionID}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -271,7 +271,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetfavoriteImageAsync",
-    "RelativePath": "api/Image/get-favorite-image/user={userID}",
+    "RelativePath": "api/image/get-favorite-image/user={userID}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -302,7 +302,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetImageByIDAsync",
-    "RelativePath": "api/Image/get/{id}",
+    "RelativePath": "api/image/get/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -328,7 +328,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetAllImageAsync",
-    "RelativePath": "api/Image/getall",
+    "RelativePath": "api/image/getall",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -354,7 +354,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "DeleteImageAsync",
-    "RelativePath": "api/Image/personal/delete",
+    "RelativePath": "api/image/personal/delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -380,7 +380,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetAllTagAsync",
-    "RelativePath": "api/Image/tag/getall",
+    "RelativePath": "api/image/tag/getall",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -406,7 +406,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetTypeAsync",
-    "RelativePath": "api/Image/type",
+    "RelativePath": "api/image/type",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -426,7 +426,7 @@
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "UploadImageAsync",
-    "RelativePath": "api/Image/upload",
+    "RelativePath": "api/image/upload",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
