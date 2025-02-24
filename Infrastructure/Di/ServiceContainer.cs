@@ -9,11 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Cloud;
 using Shared.DI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Di;
 
@@ -27,10 +22,12 @@ public static class ServiceContainer
 
         services.Configure<UserApiUrl>(config.GetSection("UserApi"));
 
+        services.Configure<ImageGenSetting>(config.GetSection("ImageGen"));
 
         services.AddScoped<ICloudInterface, CloudService>();
         services.AddScoped<IImageService, ImageService>();
         services.AddScoped<ITagService, TagService>();
+        services.AddScoped<IGenerateImageService, GenerateImageService>();
         services.AddTransient<DatabaseInitializer>();
         services.AddTransient<ApplicationDbSeeder>();
         //services.AddServices(typeof(ICustomSeeder), ServiceLifetime.Transient);

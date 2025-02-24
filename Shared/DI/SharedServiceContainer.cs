@@ -18,7 +18,7 @@ public static class SharedServiceContainer
     {
 
         //Add Generic database context interface
-        services.AddDbContext<TContext>(option => option.UseNpgsql(config.GetConnectionString("eCommerceConnection")));
+        services.AddDbContext<TContext>(option => option.UseNpgsql(config.GetConnectionString("Connection")));
 
         //Configure Serilog logging
         Log.Logger = new LoggerConfiguration()

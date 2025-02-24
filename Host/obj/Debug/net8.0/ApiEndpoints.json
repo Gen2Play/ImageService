@@ -208,6 +208,32 @@
   },
   {
     "ContainingType": "Host.Controllers.ImageController.ImageController",
+    "Method": "GenerateImageAsync",
+    "RelativePath": "api/Image/generate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Image.GenerateImageRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Responses.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Host.Controllers.ImageController.ImageController",
     "Method": "GetByCollectionAsync",
     "RelativePath": "api/Image/get-by-collection/user={userID}/collection={collectionID}",
     "HttpMethod": "POST",

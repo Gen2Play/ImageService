@@ -11,12 +11,14 @@ namespace Host.Controllers.ImageController;
 public class ImageController : ControllerBase
 {
     private readonly IImageService _imageService;
+    private readonly IGenerateImageService _generateImageService;
     private readonly ILogger<ImageController> _logger;
 
-    public ImageController(IImageService imageService, ILogger<ImageController> logger)
+    public ImageController(IImageService imageService, ILogger<ImageController> logger, IGenerateImageService generateImageService)
     {
         _imageService = imageService;
         _logger = logger;
+        _generateImageService = generateImageService;
     }
 
     [HttpPost("getall")]
@@ -111,5 +113,10 @@ public class ImageController : ControllerBase
     public async Task<Response> FeedbackAsync(AddFeedbackRequest request)
     {
         return await _imageService.FeedbackAsync(request);
+    }
+    [HttpPost("generate")]
+    public async Task<Response> GenerateImageAsync(GenerateImageRequest request)
+    {
+        return await _generateImageService.GenerateImageAsync(request);
     }
 }

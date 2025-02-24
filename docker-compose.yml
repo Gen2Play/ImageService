@@ -8,7 +8,7 @@ services:
     environment:
       - ASPNET_ENVIRONMENT=Development
       - ASPNET_CORE_URL=http://8080
-      - "ConnectionStrings:eCommerceConnection=Host=dpg-cuoub45svqrc73esqug0-a.singapore-postgres.render.com;Port=5432;Database=imageservice;Username=root;Password=ZRHSGQzjqVp7Ry999Xar08c3g64sInqN;Include Error Detail=true"
+      - "ConnectionStrings:Connection=Host=dpg-cuoub45svqrc73esqug0-a.singapore-postgres.render.com;Port=5432;Database=imageservice;Username=root;Password=ZRHSGQzjqVp7Ry999Xar08c3g64sInqN;Include Error Detail=true"
     ports:
-      - "5221:8080"
+      - "5220:8080"
     restart: always

@@ -35,6 +35,7 @@ D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Npgsql.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\RestSharp.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Serilog.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Serilog.AspNetCore.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
@@ -137,3 +138,14 @@ D:\C#\API\Gen2Play\ImageSolution\Host\obj\Debug\net8.0\refint\Host.dll
 D:\C#\API\Gen2Play\ImageSolution\Host\obj\Debug\net8.0\Host.pdb
 D:\C#\API\Gen2Play\ImageSolution\Host\obj\Debug\net8.0\Host.genruntimeconfig.cache
 D:\C#\API\Gen2Play\ImageSolution\Host\obj\Debug\net8.0\ref\Host.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Common.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Common.Abstractions.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Common.Http.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Connector.Abstractions.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Connector.ConnectorBase.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Discovery.Abstractions.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Discovery.ClientBase.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Discovery.ClientCore.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Extensions.Configuration.Abstractions.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
+D:\C#\API\Gen2Play\ImageSolution\Host\bin\Debug\net8.0\Steeltoe.Discovery.Eureka.dll
